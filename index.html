@@ -105,31 +105,15 @@
 
     <!-- VIEW 1: HOME PAGE -->
     <div id="homeView">
-        <!-- HERO SECTION (LATANSA / HELLO STYLE) -->
-        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4 py-12">
-            <!-- Background Giant Text -->
-            <div class="absolute inset-0 flex items-center justify-center select-none pointer-events-none opacity-90 z-0">
-                <h1 class="font-heading huge-text text-black text-center">HELLO</h1>
+        <!-- HERO SECTION (FULL IMAGE BANNER) -->
+        <section class="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+            <!-- Full Background/Center Image -->
+            <div class="absolute inset-0 w-full h-full z-0 flex items-center justify-center">
+                <img src="https://github.com/atayarizqu2-beep/konfeksi/blob/main/Menu.jpeg?raw=true" alt="LATANSA Menu Banner" class="w-full h-full object-cover">
             </div>
 
-            <!-- Top Left Tagline -->
-            <div class="absolute top-12 left-6 sm:left-16 z-20 flex items-start gap-3">
-                <div class="w-1 h-12 bg-black"></div>
-                <div class="font-heading font-bold text-lg sm:text-2xl leading-tight tracking-wider text-black">
-                    YOUR<br>LIFE WEAR
-                </div>
-            </div>
-
-            <!-- Bottom Right Tagline -->
-            <div class="absolute bottom-12 right-6 sm:right-16 z-20 text-right">
-                <p class="font-heading font-medium text-sm sm:text-base tracking-[0.2em] text-black">OFFICIAL</p>
-                <p class="font-heading font-bold text-base sm:text-xl tracking-widest text-black">GONTOR PRODUCT</p>
-            </div>
-
-            <!-- Center Cutout Model Image -->
-            <div class="relative z-10 max-w-xs sm:max-w-md md:max-w-lg mx-auto transform hover:scale-105 transition duration-500">
-                <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1000&auto=format&fit=crop" alt="LATANSA Model" class="w-full h-auto drop-shadow-2xl object-cover rounded-md">
-            </div>
+            <!-- Optional Dark Overlay (Opsional: hapus baris div di bawah ini jika tidak ingin ada efek gelap tipis di atas foto) -->
+            <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
         </section>
 
         <!-- SEARCH BY CATEGORIES SECTION -->
