@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LATANSA - Gontor Authentic Wear</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #EFEEE9;
+            color: #121212;
+            overflow-x: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .huge-text {
+            font-size: clamp(5rem, 18vw, 22rem);
+            line-height: 0.8;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #E5E4DE;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #121212;
+        }
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <!-- TOP BAR -->
+    <div class="bg-black text-white text-[10px] sm:text-xs py-2 px-4 tracking-widest font-heading uppercase flex justify-between items-center border-b border-gray-800">
+        <div>OFFICIAL KONVEKSI PRODUCTION & CUSTOM ORDER</div>
+        <div class="hidden sm:block">CS HOTLINE: +62 812-3456-7890</div>
+        <div>ID / IDR</div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-[#EFEEE9]/90 backdrop-blur-md border-b border-gray-300 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Left Menu Links -->
+            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-wider uppercase">
+                <button onclick="showView('home')" class="hover:text-gray-500 transition">Beranda</button>
+                <a href="#search-categories" onclick="showView('home')" class="hover:text-gray-500 transition">Kategori</a>
+                <a href="#location" onclick="showView('home')" class="hover:text-gray-500 transition">Lokasi</a>
+                <a href="#contact-us" onclick="showView('home')" class="hover:text-gray-500 transition">Kontak</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo Center -->
+            <div class="text-center cursor-pointer" onclick="showView('home')">
+                <div class="font-heading font-black tracking-widest text-xl sm:text-2xl uppercase flex items-center justify-center gap-1">
+                    <span class="bg-black text-white px-1.5 py-0.5 text-xs font-bold mr-1">L</span> LATANSA
+                </div>
+                <div class="text-[9px] tracking-[0.25em] text-gray-600 font-semibold uppercase -mt-1">
+                    GONTOR AUTHENTIC WEAR
+                </div>
+            </div>
+
+            <!-- Right Search & WhatsApp CTA -->
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block">
+                    <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="filterSearch()" class="bg-transparent border-b border-black text-xs py-1 pl-6 pr-2 focus:outline-none w-32 focus:w-48 transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-0 top-2 text-xs text-gray-500"></i>
+                </div>
+                <a href="https://wa.me/6281234567890?text=Halo%20LATANSA%20Konveksi,%20saya%20ingin%20bertanya%20produk" target="_blank" class="bg-black text-white text-xs px-4 py-2 font-semibold uppercase tracking-wider hover:bg-gray-800 transition">
+                    ORDER WA
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#EFEEE9] border-b border-gray-300 px-4 py-4 space-y-3 text-sm font-semibold tracking-wider uppercase">
+            <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left py-1">Beranda</button>
+            <a href="#search-categories" onclick="toggleMobileMenu()" class="block py-1">Kategori</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-1">Lokasi</a>
+            <a href="#contact-us" onclick="toggleMobileMenu()" class="block py-1">Kontak</a>
+            <div class="pt-2">
+                <input type="text" placeholder="Cari produk..." onkeyup="filterSearch()" class="w-full bg-white border border-gray-400 text-xs p-2 rounded-none">
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEW 1: HOME PAGE -->
+    <div id="homeView">
+        <!-- HERO SECTION (LATANSA / HELLO STYLE) -->
+        <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-4 py-12">
+            <!-- Background Giant Text -->
+            <div class="absolute inset-0 flex items-center justify-center select-none pointer-events-none opacity-90 z-0">
+                <h1 class="font-heading huge-text text-black text-center">HELLO</h1>
+            </div>
+
+            <!-- Top Left Tagline -->
+            <div class="absolute top-12 left-6 sm:left-16 z-20 flex items-start gap-3">
+                <div class="w-1 h-12 bg-black"></div>
+                <div class="font-heading font-bold text-lg sm:text-2xl leading-tight tracking-wider text-black">
+                    YOUR<br>LIFE WEAR
+                </div>
+            </div>
+
+            <!-- Bottom Right Tagline -->
+            <div class="absolute bottom-12 right-6 sm:right-16 z-20 text-right">
+                <p class="font-heading font-medium text-sm sm:text-base tracking-[0.2em] text-black">OFFICIAL</p>
+                <p class="font-heading font-bold text-base sm:text-xl tracking-widest text-black">GONTOR PRODUCT</p>
+            </div>
+
+            <!-- Center Cutout Model Image -->
+            <div class="relative z-10 max-w-xs sm:max-w-md md:max-w-lg mx-auto transform hover:scale-105 transition duration-500">
+                <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1000&auto=format&fit=crop" alt="LATANSA Model" class="w-full h-auto drop-shadow-2xl object-cover rounded-md">
+            </div>
+        </section>
+
+        <!-- SEARCH BY CATEGORIES SECTION -->
+        <section id="search-categories" class="bg-black text-white py-12 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="font-heading text-center text-xs tracking-[0.3em] font-semibold uppercase mb-8 text-gray-400">
+                    SEARCH BY CATEGORIES
+                </h2>
+                
+                <!-- Category Grid Icons -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+                    <!-- Category Card 1: Pakaian -->
+                    <div onclick="openCategoryView('pakaian')" class="bg-white text-black p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition group border border-gray-800">
+                        <i class="fa-solid fa-shirt text-3xl mb-3 group-hover:scale-110 transition"></i>
+                        <span class="font-heading font-bold text-xs uppercase tracking-wider">PAKAIAN</span>
+                        <span class="text-[10px] text-gray-500 mt-1">Lihat Koleksi &rarr;</span>
+                    </div>
+                    <!-- Category Card 2: Celana -->
+                    <div onclick="openCategoryView('celana')" class="bg-white text-black p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition group border border-gray-800">
+                        <i class="fa-solid fa-user-ninja text-3xl mb-3 group-hover:scale-110 transition"></i>
+                        <span class="font-heading font-bold text-xs uppercase tracking-wider">CELANA</span>
+                        <span class="text-[10px] text-gray-500 mt-1">Lihat Koleksi &rarr;</span>
+                    </div>
+                    <!-- Category Card 3: Kaos -->
+                    <div onclick="openCategoryView('kaos')" class="bg-white text-black p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition group border border-gray-800">
+                        <i class="fa-solid fa-vest text-3xl mb-3 group-hover:scale-110 transition"></i>
+                        <span class="font-heading font-bold text-xs uppercase tracking-wider">KAOS</span>
+                        <span class="text-[10px] text-gray-500 mt-1">Lihat Koleksi &rarr;</span>
+                    </div>
+                    <!-- Category Card 4: Kemeja -->
+                    <div onclick="openCategoryView('kemeja')" class="bg-white text-black p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition group border border-gray-800">
+                        <i class="fa-solid fa-user-tie text-3xl mb-3 group-hover:scale-110 transition"></i>
+                        <span class="font-heading font-bold text-xs uppercase tracking-wider">KEMEJA</span>
+                        <span class="text-[10px] text-gray-500 mt-1">Lihat Koleksi &rarr;</span>
+                    </div>
+                    <!-- Category Card 5: Koko -->
+                    <div onclick="openCategoryView('koko')" class="bg-white text-black p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition group border border-gray-800 col-span-2 sm:col-span-1">
+                        <i class="fa-solid fa-kaaba text-3xl mb-3 group-hover:scale-110 transition"></i>
+                        <span class="font-heading font-bold text-xs uppercase tracking-wider">KOKO</span>
+                        <span class="text-[10px] text-gray-500 mt-1">Lihat Koleksi &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMBARAN UMUM PRODUK (EDITORIAL BANNER) -->
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="relative h-96 overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" alt="Konveksi Overview" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="space-y-6 md:pl-8">
+                    <p class="text-xs font-heading font-bold tracking-[0.25em] text-gray-500 uppercase">BEST OF COLLECTION 2026</p>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold uppercase leading-tight">
+                        Kualitas Jahitan Terbaik & Bahan Authentic Premium
+                    </h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        LATANSA Konveksi melayani pembuatan pakaian berkualitas tinggi dengan standar mutu terjamin. Dari seragam instansi, busana muslim koko, hingga outfit harian kasual dengan pengerjaan cepat dan presisi.
+                    </p>
+                    <button onclick="openCategoryView('pakaian')" class="inline-block bg-black text-white text-xs px-8 py-3 font-heading font-bold uppercase tracking-widest hover:bg-gray-800 transition">
+                        EKSPLOR KOLEKSI
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION SECTION -->
+        <section id="location" class="py-12 bg-gray-200 border-t border-b border-gray-300">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <i class="fa-solid fa-location-dot text-3xl mb-3 text-black"></i>
+                <h3 class="font-heading font-extrabold text-xl uppercase tracking-wider mb-2">LOKASI WORKSHOP & SHOWROOM</h3>
+                <p class="text-sm text-gray-600 max-w-xl mx-auto mb-4">
+                    Jl. Raya Gontor No. 45, Ponorogo, Jawa Timur, Indonesia. Buka Senin - Sabtu (08.00 - 17.00 WIB).
+                </p>
+                <a href="https://maps.google.com" target="_blank" class="inline-block border border-black text-black text-xs font-bold px-6 py-2 uppercase tracking-widest hover:bg-black hover:text-white transition">
+                    Buka Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTACT US SECTION (WHATSAPP, INSTAGRAM, SHOPEE) -->
+        <section id="contact-us" class="py-16 bg-[#E5E4DE]">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="font-heading text-center text-xs tracking-[0.3em] font-semibold uppercase mb-12 text-gray-600">
+                    CONTACT US & OFFICIAL CHANNELS
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-[#EFEEE9] p-8 text-center flex flex-col items-center justify-center border border-gray-300 hover:border-black transition group">
+                        <i class="fa-brands fa-whatsapp text-4xl mb-4 text-black group-hover:scale-110 transition"></i>
+                        <h4 class="font-heading font-extrabold text-sm tracking-wider uppercase">WHATSAPP ORDER</h4>
+                        <p class="text-xs text-gray-500 mt-1">Direct Order & Fast Response Chat</p>
+                    </a>
+                    <!-- Instagram Button -->
+                    <a href="https://instagram.com" target="_blank" class="bg-[#EFEEE9] p-8 text-center flex flex-col items-center justify-center border border-gray-300 hover:border-black transition group">
+                        <i class="fa-brands fa-instagram text-4xl mb-4 text-black group-hover:scale-110 transition"></i>
+                        <h4 class="font-heading font-extrabold text-sm tracking-wider uppercase">INSTAGRAM</h4>
+                        <p class="text-xs text-gray-500 mt-1">Follow Us for Daily Catalog Updates</p>
+                    </a>
+                    <!-- Shopee Button -->
+                    <a href="https://shopee.co.id" target="_blank" class="bg-[#EFEEE9] p-8 text-center flex flex-col items-center justify-center border border-gray-300 hover:border-black transition group">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-4 text-black group-hover:scale-110 transition"></i>
+                        <h4 class="font-heading font-extrabold text-sm tracking-wider uppercase">SHOPEE STORE</h4>
+                        <p class="text-xs text-gray-500 mt-1">Visit & Shop via Official Marketplace</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- VIEW 2: CATEGORY PAGE (HOODIE / CATEGORY BANNER STYLE) -->
+    <div id="categoryView" class="hidden">
+        <!-- Category Banner -->
+        <section class="py-12 px-4 max-w-7xl mx-auto">
+            <!-- Back Button -->
+            <button onclick="showView('home')" class="mb-6 inline-flex items-center text-xs font-bold uppercase tracking-wider hover:text-gray-600 transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Beranda
+            </button>
+
+            <!-- Big Category Banner Title -->
+            <div class="text-center mb-8">
+                <p class="text-xs font-heading font-semibold tracking-[0.25em] uppercase text-gray-500" id="catSubtitle">THE BEST COLLECTION IS HERE</p>
+                <h1 class="font-heading text-5xl sm:text-7xl font-black uppercase tracking-tight mt-1" id="catTitle">KOKO</h1>
+            </div>
+
+            <!-- General Category Overview Image Banner (Can be edited by owner) -->
+            <div class="relative h-72 sm:h-96 w-full rounded-md overflow-hidden mb-12 shadow-lg">
+                <img id="catBannerImg" src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?q=80&w=1000&auto=format&fit=crop" alt="Category Header" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur-sm px-8 py-4 text-center">
+                        <span class="font-heading font-bold text-xs uppercase tracking-widest block text-black">OFFICIAL COLLECTION</span>
+                        <span class="text-[10px] text-gray-600 tracking-wider uppercase">Swipe & Explore Catalog</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Quick Bar -->
+            <div class="flex justify-center space-x-6 text-xs font-bold uppercase tracking-widest text-gray-600 border-b border-gray-300 pb-6 mb-12">
+                <a href="https://instagram.com" target="_blank" class="hover:text-black">Instagram</a>
+                <span>•</span>
+                <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-black">WhatsApp</a>
+                <span>•</span>
+                <a href="https://shopee.co.id" target="_blank" class="hover:text-black">Shopee</a>
+            </div>
+
+            <!-- Products Under Selected Category -->
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-heading font-extrabold text-sm uppercase tracking-wider">DAFTAR PRODUK KATEGORI</h3>
+                    <span id="productCount" class="text-xs text-gray-500 font-semibold">4 Produk</span>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="categoryProductGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    <!-- Products dynamically rendered here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- VIEW 3: PRODUCT DETAIL MODAL / VIEW (VELORA STYLE) -->
+    <div id="productDetailModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/70 modal-blur flex items-center justify-center p-4">
+        <div class="bg-[#EFEEE9] w-full max-w-4xl rounded-none shadow-2xl overflow-hidden relative border border-gray-400 my-8">
+            <!-- Close Button -->
+            <button onclick="closeProductDetail()" class="absolute top-4 right-4 z-20 text-2xl text-black hover:text-gray-600 p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-10">
+                <!-- Product Main Image -->
+                <div class="space-y-4">
+                    <div class="h-80 sm:h-96 overflow-hidden border border-gray-300">
+                        <img id="detailImg" src="" alt="Detail Product" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Product Info & Order -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span id="detailCategory" class="text-[10px] font-heading font-bold uppercase tracking-widest text-gray-500 block mb-1">KATEGORI</span>
+                        <h2 id="detailTitle" class="font-heading font-black text-2xl sm:text-3xl uppercase leading-tight mb-2">NAMA PRODUK</h2>
+                        <div id="detailPrice" class="font-heading font-extrabold text-xl text-black mb-6">Rp 0</div>
+
+                        <!-- Action WA Button -->
+                        <a id="detailWaBtn" href="#" target="_blank" class="w-full bg-black text-white py-4 px-6 flex items-center justify-center font-heading font-bold text-xs uppercase tracking-widest hover:bg-gray-800 transition mb-6 space-x-3">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>PESAN LEWAT WA</span>
+                        </a>
+
+                        <!-- Product Description & Specs -->
+                        <div class="border-t border-gray-300 pt-4 space-y-3 text-xs text-gray-700">
+                            <h4 class="font-heading font-bold uppercase tracking-wider text-black">DESKRIPSI PRODUK</h4>
+                            <p id="detailDesc" class="leading-relaxed">
+                                Deskripsi lengkap produk konveksi akan muncul di sini.
+                            </p>
+                            <ul class="space-y-1.5 pt-2 text-gray-600">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[10px] mr-2 text-black"></i> Bahan Kain Premium Grade A</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[10px] mr-2 text-black"></i> Jahitan Rapi & Presisi Standar Ekspor</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[10px] mr-2 text-black"></i> Menyerap Keringat & Nyaman Dipakai</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Footer Note Inside Modal -->
+                    <div class="pt-6 border-t border-gray-300 mt-6 text-[10px] text-gray-500 font-semibold tracking-wider uppercase flex justify-between">
+                        <span>LATANSA AUTHENTIC</span>
+                        <span>OFFICIAL GONTOR PRODUCT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-8 px-4 border-t border-gray-800 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="font-heading font-black tracking-widest text-lg text-white uppercase">LATANSA</div>
+            <p class="text-[11px] tracking-wider uppercase">GONTOR AUTHENTIC WEAR & KONVEKSI PRODUCTION</p>
+            <p class="text-[10px] text-gray-600">&copy; 2026 LATANSA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT PRODUCT DATA & CONTROLLER -->
+    <script>
+        // DATABASE PRODUK (Bisa diubah/ditambah sesuai stok Anda)
+        const products = [
+            // KOKO
+            {
+                id: 1,
+                name: "Koko Latansa Exclusive Grey",
+                category: "koko",
+                price: "Rp 185.000",
+                img: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?q=80&w=1000&auto=format&fit=crop",
+                desc: "Busana Koko lengan panjang eksklusif buatan LATANSA. Dibuat dengan katun berkualitas tinggi yang adem, nyaman, dan berkarakter unik khas Authentic Wear Gontor."
+            },
+            {
+                id: 2,
+                name: "Koko Modern White Authentic",
+                category: "koko",
+                price: "Rp 175.000",
+                img: "https://images.unsplash.com/photo-1598032895397-b9472444bf93?q=80&w=1000&auto=format&fit=crop",
+                desc: "Koko putih polos dengan aksen bordir minimalis di bagian dada. Cocok untuk acara resmi, ibadah, maupun aktivitas harian."
+            },
+            // KAOS
+            {
+                id: 3,
+                name: "Kaos Polos Heavyweight Cotton",
+                category: "kaos",
+                price: "Rp 85.000",
+                img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop",
+                desc: "Kaos polos berbahan katun kombed 24s premium. Tebal, menyerap keringat, tidak gampang melar, dan tersedia berbagai pilihan warna."
+            },
+            {
+                id: 4,
+                name: "Kaos Graphic Gontor Edition",
+                category: "kaos",
+                price: "Rp 95.000",
+                img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1000&auto=format&fit=crop",
+                desc: "Kaos sablon bertema grafis minimalis elegan dengan tinta plastisol terbaik."
+            },
+            // KEMEJA
+            {
+                id: 5,
+                name: "Kemeja PDL Lapangan Custom",
+                category: "kemeja",
+                price: "Rp 160.000",
+                img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1000&auto=format&fit=crop",
+                desc: "Kemeja lapangan / PDL berbahan American Drill tebal dan kuat. Sangat cocok untuk seragam organisasi maupun aktivitas luar ruangan."
+            },
+            {
+                id: 6,
+                name: "Kemeja Formal Slimfit Black",
+                category: "kemeja",
+                price: "Rp 150.000",
+                img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000&auto=format&fit=crop",
+                desc: "Kemeja formal dengan potongan slimfit modern. Sangat rapi untuk dipakai rapat dan acara formal."
+            },
+            // CELANA
+            {
+                id: 7,
+                name: "Celana Chino Slimfit Cream",
+                category: "celana",
+                price: "Rp 165.000",
+                img: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1000&auto=format&fit=crop",
+                desc: "Celana chino stretch elastis yang sangat nyaman untuk bergerak seharian. Bahan tidak gampang pudar."
+            },
+            {
+                id: 8,
+                name: "Celana Sirwal Casual Dark Grey",
+                category: "celana",
+                price: "Rp 140.000",
+                img: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=1000&auto=format&fit=crop",
+                desc: "Celana sirwal casual panjang diatas mata kaki. Jahitan double rapi dengan pinggang karet fleksibel."
+            },
+            // PAKAIAN
+            {
+                id: 9,
+                name: "Jaket Bomber Konveksi Custom",
+                category: "pakaian",
+                price: "Rp 210.000",
+                img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1000&auto=format&fit=crop",
+                desc: "Jaket bomber berbahan Taslan Waterproof tahan air dengan furing dalam yang hangat dan nyaman."
+            }
+        ];
+
+        // Banner Gambaran Umum Per Kategori (Owner Editable)
+        const categoryBanners = {
+            koko: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?q=80&w=1000&auto=format&fit=crop",
+            kaos: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop",
+            kemeja: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1000&auto=format&fit=crop",
+            celana: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1000&auto=format&fit=crop",
+            pakaian: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop"
+        };
+
+        // NAVIGATION SWITCHER
+        function showView(viewName) {
+            if(viewName === 'home') {
+                document.getElementById('homeView').classList.remove('hidden');
+                document.getElementById('categoryView').classList.add('hidden');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // OPEN CATEGORY VIEW (GANTI TAMPILAN KE KATEGORI)
+        function openCategoryView(catKey) {
+            document.getElementById('homeView').classList.add('hidden');
+            document.getElementById('categoryView').classList.remove('hidden');
+
+            const catTitle = catKey.toUpperCase();
+            document.getElementById('catTitle').innerText = catTitle;
+            document.getElementById('catSubtitle').innerText = `KOLEKSI PILIHAN ${catTitle} LATANSA`;
+            document.getElementById('catBannerImg').src = categoryBanners[catKey] || categoryBanners['pakaian'];
+
+            // Filter Products
+            const filtered = products.filter(p => p.category.toLowerCase() === catKey.toLowerCase());
+            document.getElementById('productCount').innerText = `${filtered.length} Produk`;
+
+            const grid = document.getElementById('categoryProductGrid');
+            grid.innerHTML = '';
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-gray-500 py-12">Belum ada produk di kategori ini.</p>`;
+            } else {
+                filtered.forEach(p => {
+                    grid.innerHTML += `
+                        <div class="bg-[#EFEEE9] border border-gray-300 group flex flex-col justify-between">
+                            <div class="h-64 sm:h-72 overflow-hidden relative cursor-pointer" onclick="openProductDetail(${p.id})">
+                                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-2 left-2 bg-black text-white text-[9px] font-heading font-bold px-2 py-0.5 uppercase tracking-wider">
+                                    ${p.category}
+                                </span>
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-black line-clamp-1">${p.name}</h4>
+                                    <p class="font-heading font-extrabold text-sm text-black mt-1">${p.price}</p>
+                                </div>
+                                <button onclick="openProductDetail(${p.id})" class="mt-4 w-full border border-black text-black hover:bg-black hover:text-white transition font-heading text-[10px] font-bold py-2 uppercase tracking-widest">
+                                    DETAIL
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // OPEN PRODUCT DETAIL MODAL
+        function openProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if(!product) return;
+
+            document.getElementById('detailImg').src = product.img;
+            document.getElementById('detailTitle').innerText = product.name;
+            document.getElementById('detailCategory').innerText = `KATEGORI: ${product.category.toUpperCase()}`;
+            document.getElementById('detailPrice').innerText = product.price;
+            document.getElementById('detailDesc').innerText = product.desc;
+
+            // Setup WhatsApp Link with custom text
+            const waMessage = `Halo LATANSA Konveksi, saya berminat dengan produk:\n\n*${product.name}*\nHarga: ${product.price}\n\nApakah stok masih tersedia?`;
+            document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${encodeURIComponent(waMessage)}`;
+
+            document.getElementById('productDetailModal').classList.remove('hidden');
+        }
+
+        function closeProductDetail() {
+            document.getElementById('productDetailModal').classList.add('hidden');
+        }
+
+        // LIVE SEARCH FILTER
+        function filterSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if(!query) return;
+
+            const matchingProduct = products.find(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+            if(matchingProduct) {
+                openCategoryView(matchingProduct.category);
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
